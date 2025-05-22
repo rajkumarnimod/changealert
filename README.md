@@ -169,7 +169,7 @@ ChangeAlert is released under the [MIT license](LICENSE).
 
 Created with ❤️ by Rajkumar Nimod.
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/rajkumarnimod)
+Connect with me on [LinkedIn](https://www.linkedin.com/in/rajkumar-nimod)
 
 
 > _Cool alerts for cool websites!_
