@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChangeAlert Library Documentation - Customizable JS Alerts</title>
+    <meta
+      name="description"
+      content="ChangeAlert is a powerful and customizable JavaScript library for creating interactive and responsive alerts. Easily display success, error, warning, and info messages with full control over appearance, position, sound, and animation."
+    />
+    <meta
+      name="keywords"
+      content="ChangeAlert, JavaScript alerts, custom alerts, JS notification library, responsive alerts, success messages, error messages, warning alerts, info alerts, customizable popups, web notifications, frontend library, Raj Nimod"
+    />
+    <meta name="author" content="Rajkumar Nimod" />
+    <meta
+      property="og:title"
+      content="ChangeAlert - Customizable JavaScript Alert Library"
+    />
+    <meta
+      property="og:description"
+      content="ChangeAlert is a powerful and customizable JavaScript library for creating interactive and responsive alerts. Easily display success, error, warning, and info messages with full control over appearance, position, sound, and animation."
+    />
+    <meta property="og:type" content="website" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f6;
+        color: #252525;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1180px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 15px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+
+      .header {
+        width: 100%;
+        height: 35vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #d0e6f6;
+      }
+
+      h1 {
+        font-size: 3.2em;
+        position: relative;
+      }
+
+      @media (max-width:420px){
+        h1 {
+        font-size: 1.4em;
+        position: relative;
+      }
+      }
+
+      h1::after {
+        content: "";
+        display: block;
+        width: 150px;
+        height: 4px;
+        background-color: #2a9be6;
+        margin: 10px auto 0;
+        border-radius: 2px;
+      }
+
+      h2 {
+        font-size: 1.7em;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 10px;
+        margin-top: 40px;
+      }
+
+      h3 {
+        font-size: 1.4em;
+        margin-top: 30px;
+        color: #34495e;
+      }
+
+      p {
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .code-block {
+        background-color: #ecf0f1;
+        border-left: 4px solid #3498db;
+        padding: 20px;
+        margin: 20px 0;
+        overflow-x: auto;
+        border-radius: 5px;
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 1.3em;
+        color: #34495e;
+        cursor: pointer;
+        /* Indicate it's clickable */
+        position: relative;
+      }
+
+      .code-block pre {
+        margin: 0;
+        white-space: pre-wrap;
+        /* Ensures long lines wrap */
+        word-break: break-all;
+        /* Breaks words if necessary */
+      }
+
+      .copy-message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(12, 183, 231);
+        color: white;
+        padding: 2px 10px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        /* Allows clicks to pass through */
+      }
+
+      .property-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .property-list li {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .property-list li strong {
+        color: #475b69;
+        font-size: 1.3em;
+      }
+
+      .property-list li .type,
+      .property-list li .default {
+        font-style: italic;
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      .example-code {
+        background-color: #d3e5f6;
+        border: 1px dashed #7f91da;
+        padding: 10px 15px;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 1.2em;
+        position: relative;
+        cursor: pointer;
+        overflow-x: auto;
+      }
+
+      .button-demo button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+      }
+
+      .button-demo button:hover {
+        background-color: #2980b9;
+      }
+
+      ul li code {
+        font-size: 1.3em;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #e0e0e0;
+        color: #777;
+        font-size: 0.9em;
+      }
+    </style>
+    <link rel="stylesheet" href="dist/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>ChangeAlert Library Documentation</h1>
+      </div>
+
+      <p>
+        The <strong>ChangeAlert</strong> library enables you to create
+        customizable and interactive alert boxes for your website. These alerts
+        come in various types (success, error, warning, info), and you have
+        complete control over properties such as position, theme, timeout,
+        sound, and more.
+      </p>
+
+      <h2>Library Features</h2>
+      <ul>
+        <li>Simple and highly customizable alerts.</li>
+        <li>
+          Supports 4 alert types: <strong>Success</strong>,
+          <strong>Error</strong>, <strong>Warning</strong>, and
+          <strong>Info</strong>.
+        </li>
+        <li>
+          Multiple customizable properties including position, theme, sound,
+          timeout, etc.
+        </li>
+        <li>Callback function support (onClick, onClose).</li>
+        <li>Responsive design optimized for mobile devices.</li>
+      </ul>
+
+      
+      <h2>How to Use the Library</h2>
+
+      <h3>1. Include the CSS and JS files</h3>
+      <p>
+        To use the <strong>ChangeAlert</strong> library, simply include the CSS
+        and JS files in your HTML’s <code>&lt;head&gt;</code> section or just
+        before the closing <code>&lt;/body&gt;</code> tag:
+      </p>
+      <div class="code-block">
+        <pre>
+&lt;link rel="stylesheet" href="ChangeAlert.css"&gt;
+&lt;script src="ChangeAlert.js"&gt;&lt;/script&gt;</pre
+        >
+        <div class="copy-message">Copied!</div>
+      </div>
+
+      <h3>2. Using ChangeAlert</h3>
+      <p>
+        Now you can easily use the <strong>ChangeAlert</strong> functions in
+        your JavaScript to display alerts:
+      </p>
+      <div class="code-block">
+        <pre>
+ChangeAlert.success("Operation completed!");
+ChangeAlert.error("An error occurred!");
+ChangeAlert.warning("This is a warning!");
+ChangeAlert.info("Just an informational message!");</pre
+        >
+        <div class="copy-message">Copied!</div>
+      </div>
+      <p>
+        You can also pass optional properties to further customize the alerts:
+      </p>
+      <div class="code-block">
+        <pre>
+ChangeAlert.success("Success!", { position: "bottom-left", timeout: 5000 });
+ChangeAlert.error("Error!", { sound: false, theme: "dark" });</pre
+        >
+        <div class="copy-message">Copied!</div>
+      </div>
+
+      <h2>Complete Example</h2>
+      <p>
+        Here's a complete HTML example demonstrating how to integrate and use
+        the <strong>ChangeAlert</strong> library:
+      </p>
+      <div class="code-block">
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;ChangeAlert Demo&lt;/title&gt;
+  &lt;link rel="stylesheet" href="ChangeAlert.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h2&gt;🔥 ChangeAlert Demo&lt;/h2&gt;
+  
+  &lt;button onclick="ChangeAlert.success('Success message!', { position: 'top-right', sound: true })"&gt;Success&lt;/button&gt;
+  &lt;button onclick="ChangeAlert.error('Error occurred!', { position: 'bottom-left', timeout: 5000 })"&gt;Error&lt;/button&gt;
+  &lt;button onclick="ChangeAlert.warning('Warning message!', { pauseOnHover: false, icon: '⚠️' })"&gt;Warning&lt;/button&gt;
+  &lt;button onclick="ChangeAlert.info('Info message!', { theme: 'dark', closeButton: false })"&gt;Info&lt;/button&gt;
+
+  &lt;script src="ChangeAlert.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre
+        >
+        <div class="copy-message">Copied!</div>
+      </div>
+
+      <h2>Properties</h2>
+      <ul class="property-list">
+        <li>
+          <strong>1. message</strong> (Required)
+          <p><span class="type">Type: string</span></p>
+          <p>Description: The text content displayed inside the alert box.</p>
+          <div class="example-code">
+            <pre>ChangeAlert.success("Data uploaded successfully!");</pre>
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>2. type</strong> (Optional)
+          <p>
+            <span class="type">Type: string</span> |
+            <span class="default">Default: "info"</span>
+          </p>
+          <p>Description: Defines the alert type. Available options:</p>
+          <ul>
+            <li style="background-color: #dff0d8;"><code>"success"</code>: For successful operations.</li>
+            <li style="background-color: #f2dede;"><code>"error"</code>: For error messages.</li>
+            <li style="background-color: #fcf8e3;"><code>"warning"</code>: For warnings.</li>
+            <li style="background-color: #d9edf7;"><code>"info"</code>: For informational messages.</li>
+          </ul>
+          <div class="example-code">
+            <pre>ChangeAlert.error("Failed to load data!");</pre>
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>3. position</strong> (Optional)
+          <p>
+            <span class="type">Type: string</span> |
+            <span class="default">Default: "top-right"</span>
+          </p>
+          <p>
+            Description: Position of the alert on the screen. Options include:
+          </p>
+          <ul>
+            <li><code>"top-left"</code></li>
+            <li><code>"top-right"</code></li>
+            <li><code>"bottom-left"</code></li>
+            <li><code>"bottom-right"</code></li>
+          </ul>
+          <div class="example-code">
+            <pre>
+ChangeAlert.success("Task completed!", { position: "bottom-left" });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>4. timeout</strong> (Optional)
+          <p>
+            <span class="type">Type: number</span> |
+            <span class="default">Default: 3000 (3 seconds)</span>
+          </p>
+          <p>
+            Description: Duration (in milliseconds) before the alert
+            automatically closes.
+          </p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.success("Data saved successfully!", { timeout: 5000 });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>5. icon</strong> (Optional)
+          <p>
+            <span class="type">Type: string</span> |
+            <span class="default"
+              >Default: Depends on alert type (e.g., "✅" for success)</span
+            >
+          </p>
+          <p>
+            Description: Icon displayed inside the alert box. Can be an emoji or
+            custom SVG. Defaults to a predefined icon based on the alert type.
+          </p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.success("Successfully completed!", { icon: "🎉" });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>6. closeButton</strong> (Optional)
+          <p>
+            <span class="type">Type: boolean</span> |
+            <span class="default">Default: true</span>
+          </p>
+          <p>
+            Description: Show or hide a close (X) button to allow users to
+            manually dismiss the alert.
+          </p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.error("Something went wrong!", { closeButton: false });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>7. animation</strong> (Optional)
+          <p>
+            <span class="type">Type: string</span> |
+            <span class="default">Default: "fade"</span>
+          </p>
+          <p>
+            Description: Animation style for showing and hiding alerts. Options
+            include:
+          </p>
+          <ul>
+            <li><code>"fade"</code></li>
+            <li><code>"slide"</code></li>
+          </ul>
+          <p>Custom CSS animations can also be applied.</p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.warning("Please check the details", { animation: "slide" });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>8. theme</strong> (Optional)
+          <p>
+            <span class="type">Type: string</span> |
+            <span class="default">Default: "light"</span>
+          </p>
+          <p>Description: Theme of the alert box. Available themes:</p>
+          <ul>
+            <li><code>"light"</code> (default)</li>
+            <li><code>"dark"</code></li>
+          </ul>
+          <div class="example-code">
+            <pre>
+ChangeAlert.success("Operation completed!", { theme: "dark" });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>9. sound</strong> (Optional)
+          <p>
+            <span class="type">Type: boolean | string</span> |
+            <span class="default">Default: undefined (no sound)</span>
+          </p>
+          <p>Description: Sound played when the alert is shown.</p>
+          <ul>
+            <li>
+              <code>true</code>: Play default sound based on alert type
+              (success, error, warning, info).
+            </li>
+            <li><code>false</code>: Mute sound.</li>
+            <li><code>string</code>: URL of a custom sound file.</li>
+          </ul>
+          <div class="example-code">
+            <pre>
+ChangeAlert.success("Data uploaded successfully!", { sound: true });</pre
+            >
+            <div class="copy-message">Copied!</div>
+            <pre>
+ChangeAlert.success("File uploaded!", { sound: "https://example.com/success.mp3" });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>10. pauseOnHover</strong> (Optional)
+          <p>
+            <span class="type">Type: boolean</span> |
+            <span class="default">Default: true</span>
+          </p>
+          <p>
+            Description: Whether to pause the alert's auto-close timer when the
+            user hovers over it.
+          </p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.warning("Alert with timer pause on hover!", { pauseOnHover: false });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>11. onClick</strong> (Optional)
+          <p>
+            <span class="type">Type: function</span> |
+            <span class="default">Default: null</span>
+          </p>
+          <p>
+            Description: Callback function executed when the alert box is
+            clicked.
+          </p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.success("Click to acknowledge!", {
+          onClick: () => alert("Alert clicked!")
+        });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+        <li>
+          <strong>12. onClose</strong> (Optional)
+          <p>
+            <span class="type">Type: function</span> |
+            <span class="default">Default: null</span>
+          </p>
+          <p>
+            Description: Callback function executed when the alert closes
+            (manually or automatically).
+          </p>
+          <div class="example-code">
+            <pre>
+ChangeAlert.error("Something went wrong!", {
+          onClose: () => console.log("Alert closed")
+        });</pre
+            >
+            <div class="copy-message">Copied!</div>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Combining Multiple Properties</h2>
+      <p>
+        You can effortlessly combine various properties when calling the
+        <code>ChangeAlert</code> function. For example, you can set the type,
+        position, timeout, sound, theme, and a custom icon all in one go!
+      </p>
+      <div class="code-block">
+        <pre>
+ChangeAlert.success("File uploaded successfully!", {
+  type: "success",           // Alert type
+  position: "top-left",      // Position on screen
+  timeout: 5000,             // Alert will disappear after 5 seconds
+  sound: true,               // Play default sound for success
+  theme: "dark",             // Dark theme
+  icon: "🎉",                // Custom icon (emoji)
+  closeButton: true,         // Show close button
+  pauseOnHover: true,        // Pause the timer on hover
+  onClick: () => alert("You clicked the alert!"), // Callback on click
+  onClose: () => console.log("Alert closed!") // Callback on close
+});</pre
+        >
+        <div class="copy-message">Copied!</div>
+      </div>
+
+      <div class="button-demo" style="text-align: center; margin-top: 30px">
+        <h3>Try it out!</h3>
+        <p>
+          Click these buttons to see the alerts in action (assuming
+          <code>ChangeAlert.js</code> and <code>ChangeAlert.css</code> are
+          linked correctly):
+        </p>
+
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <button
+            onclick="ChangeAlert.success('Operation completed successfully!', { sound: true })"
+          >
+            ✅ Success Alert: Operation Done
+          </button>
+
+          <button
+            onclick="ChangeAlert.error('Failed to process the request!', { sound: true })"
+          >
+            ❌ Error Alert: Process Failed
+          </button>
+
+          <button
+            onclick="ChangeAlert.warning('Please check your input values.', { sound: true })"
+          >
+            ⚠️ Warning Alert: Check Input
+          </button>
+
+          <button
+            onclick="ChangeAlert.info('Remember to save your changes regularly.', { sound: true })"
+          >
+            ℹ️ Info Alert: Save Reminder
+          </button>
+
+          <button
+            onclick="ChangeAlert.success('Task completed in dark mode!', { theme: 'dark', icon: '🌙', sound: true })"
+          >
+            🌙 Success Alert (Dark Theme)
+          </button>
+
+          <button
+            onclick="ChangeAlert.success('Custom success sound test', { sound: 'https://example.com/success.mp3' })"
+          >
+            🔊 Success with Custom Sound
+          </button>
+
+          <button
+            onclick="ChangeAlert.error('Error occurred (No sound)', { sound: false })"
+          >
+            🔇 Error Alert (Muted)
+          </button>
+
+          <button
+            onclick="ChangeAlert.warning('Warning with special alert tone', { sound: 'https://example.com/warning.mp3' })"
+          >
+            📣 Warning Alert with Custom Sound
+          </button>
+
+          <button
+            onclick="ChangeAlert.info('Info alert muted for user preference.', { sound: false })"
+          >
+            🔕 Info Alert (Muted)
+          </button>
+
+          <button
+            onclick="ChangeAlert.success('Success alert with 8 seconds timeout', { timeout: 8000, sound: true })"
+          >
+            🕒 Custom Timeout Success Alert
+          </button>
+        </div>
+      </div>
+
+      <h2>Conclusion</h2>
+      <p>
+        With <strong>ChangeAlert</strong>, you can effortlessly create
+        customizable, interactive, and responsive alert boxes for your web
+        projects. You have complete control over every aspect of the alert,
+        including its message, type, position, sound, icon, and more. The
+        library also provides the flexibility to add custom callback functions
+        for enhanced interactivity.
+      </p>
+      <p>
+        Feel free to explore the possibilities and integrate ChangeAlert into
+        your website for a better user experience!
+      </p>
+
+      <footer>
+        <p>&copy; 2025 <a href="index.html">ChangeAlert</a>. All rights reserved.</p>
+        <div>
+          <p>
+            Created by Rajkumar Nimod ❤️ 
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      if (typeof ChangeAlert === "undefined") {
+        const createDummyAlert = (message, options) => {
+          const alertDiv = document.createElement("div");
+          alertDiv.style.cssText = `
+                position: fixed;
+                padding: 15px 25px;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: all 0.5s ease-in-out;
+                ${
+                  options.position === "top-right"
+                    ? "top: 20px; right: 20px;"
+                    : ""
+                }
+                ${
+                  options.position === "bottom-left"
+                    ? "bottom: 20px; left: 20px;"
+                    : ""
+                }
+                ${
+                  options.position === "top-left"
+                    ? "top: 20px; left: 20px;"
+                    : ""
+                }
+                ${
+                  options.position === "bottom-right"
+                    ? "bottom: 20px; right: 20px;"
+                    : ""
+                }
+                background-color: ${
+                  options.type === "success"
+                    ? "#28a745"
+                    : options.type === "error"
+                    ? "#dc3545"
+                    : options.type === "warning"
+                    ? "#ffc107"
+                    : "#17a2b8"
+                };
+            `;
+          alertDiv.innerHTML = `${options.icon || ""} ${message}`;
+          document.body.appendChild(alertDiv);
+
+          if (options.timeout !== 0) {
+            setTimeout(() => {
+              alertDiv.style.opacity = "0";
+              alertDiv.style.transform = "scale(0.9)";
+              setTimeout(() => alertDiv.remove(), 500);
+              if (options.onClose) options.onClose();
+            }, options.timeout || 3000);
+          }
+
+          if (options.onClick) {
+            alertDiv.addEventListener("click", options.onClick);
+          }
+        };
+
+        window.ChangeAlert = {
+          success: (message, options = {}) =>
+            createDummyAlert(message, {
+              ...options,
+              type: "success",
+              icon: options.icon || "✅",
+            }),
+          error: (message, options = {}) =>
+            createDummyAlert(message, {
+              ...options,
+              type: "error",
+              icon: options.icon || "❌",
+            }),
+          warning: (message, options = {}) =>
+            createDummyAlert(message, {
+              ...options,
+              type: "warning",
+              icon: options.icon || "⚠️",
+            }),
+          info: (message, options = {}) =>
+            createDummyAlert(message, {
+              ...options,
+              type: "info",
+              icon: options.icon || "ℹ️",
+            }),
+        };
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const codeBlocks = document.querySelectorAll(
+          ".code-block, .example-code"
+        );
+
+        codeBlocks.forEach((block) => {
+          block.addEventListener("click", async (event) => {
+            // Prevent clicking on inner elements (like 'pre') from re-triggering
+            if (
+              event.target !== block &&
+              event.target.parentNode !== block &&
+              event.target.tagName !== "PRE"
+            ) {
+              return;
+            }
+
+            const codeToCopy = block.querySelector("pre").textContent;
+            const copyMessage = block.querySelector(".copy-message");
+
+            try {
+              await navigator.clipboard.writeText(codeToCopy);
+              if (copyMessage) {
+                copyMessage.style.opacity = "1";
+                setTimeout(() => {
+                  copyMessage.style.opacity = "0";
+                }, 1500); // Message disappears after 1.5 seconds
+              }
+            } catch (err) {
+              console.error("Failed to copy text: ", err);
+              // Optionally, alert the user about the failure
+              alert("Failed to copy code. Please copy manually.");
+            }
+          });
+        });
+      });
+    </script>
+
+<script src="/dist/script.js"></script>
+  </body>
+</html>
