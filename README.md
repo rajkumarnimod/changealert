@@ -29,11 +29,11 @@
 
 Simply include the CSS and JS files in your HTML:
 
-> Place the script **before** `</body>` or use `defer`.
+> Add this in the <head> for CSS and before </body> for JS
 
 ```html
-<link rel="stylesheet" href="ChangeAlert.css">
-<script src="ChangeAlert.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/style.css">
+<script src="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/script.js"></script>
 ```
 
 ### Download
