@@ -1,7 +1,7 @@
 /*!
  * CustomAlert.css - A simple and powerful JavaScript alert system
  * Author: Rajkumar Nimod
- * Website: https://masterinwebdesign.in
+ * Website: https://rajkumarnimod.github.io/changealert/
  * Version: 1.0.0
  * License: MIT
  *
@@ -12,105 +12,5 @@
 
  /* Please retain this header when using or modifying the file */
 
-:root {
-  --toast-width: 300px;
-  --toast-font: "Segoe UI", sans-serif;
-  --toast-padding: 14px 18px;
-  --toast-radius: 6px;
-  --toast-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 
-  /* Light Theme Colors */
-  --toast-bg-success: #dff0d8;
-  --toast-bg-error: #f2dede;
-  --toast-bg-warning: #fcf8e3;
-  --toast-bg-info: #d9edf7;
-
-  --toast-color-success: #3c763d;
-  --toast-color-error: #a94442;
-  --toast-color-warning: #8a6d3b;
-  --toast-color-info: #31708f;
-}
-
-[data-theme="dark"] {
-  --toast-bg-success: #2e7d32;
-  --toast-bg-error: #c62828;
-  --toast-bg-warning: #f9a825;
-  --toast-bg-info: #0288d1;
-
-  --toast-color-success: #ffffff;
-  --toast-color-error: #ffffff;
-  --toast-color-warning: #000000;
-  --toast-color-info: #ffffff;
-}
-
-.toast-container {
-  position: fixed;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.toast-container.top-right { top: 20px; right: 20px; }
-.toast-container.top-left { top: 20px; left: 20px; }
-.toast-container.bottom-right { bottom: 20px; right: 20px; }
-.toast-container.bottom-left { bottom: 20px; left: 20px; }
-
-.toast {
-  width: var(--toast-width);
-  font-family: var(--toast-font);
-  padding: var(--toast-padding);
-  border-radius: var(--toast-radius);
-  box-shadow: var(--toast-shadow);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  animation: fadein 0.3s ease;
-  cursor: pointer;
-}
-
-.toast .icon {
-  font-size: 20px;
-}
-
-.toast .close-btn {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.toast.success {
-  background-color: var(--toast-bg-success);
-  color: var(--toast-color-success);
-}
-
-.toast.error {
-  background-color: var(--toast-bg-error);
-  color: var(--toast-color-error);
-}
-
-.toast.warning {
-  background-color: var(--toast-bg-warning);
-  color: var(--toast-color-warning);
-}
-
-.toast.info {
-  background-color: var(--toast-bg-info);
-  color: var(--toast-color-info);
-}
-
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 500px) {
-  .toast {
-    width: 90%;
-    font-size: 14px;
-    padding: 10px 14px;
-  }
-}
+:root{--toast-width:300px;--toast-font:"Segoe UI",sans-serif;--toast-padding:14px 18px;--toast-radius:6px;--toast-shadow:0 2px 10px rgba(0, 0, 0, 0.2);--toast-bg-success:#dff0d8;--toast-bg-error:#f2dede;--toast-bg-warning:#fcf8e3;--toast-bg-info:#d9edf7;--toast-color-success:#3c763d;--toast-color-error:#a94442;--toast-color-warning:#8a6d3b;--toast-color-info:#31708f}[data-theme=dark]{--toast-bg-success:#2e7d32;--toast-bg-error:#c62828;--toast-bg-warning:#f9a825;--toast-bg-info:#0288d1;--toast-color-success:#ffffff;--toast-color-error:#ffffff;--toast-color-warning:#000000;--toast-color-info:#ffffff}.toast-container{position:fixed;z-index:9999;display:flex;flex-direction:column;gap:10px}.toast-container.top-right{top:20px;right:20px}.toast-container.top-left{top:20px;left:20px}.toast-container.bottom-right{bottom:20px;right:20px}.toast-container.bottom-left{bottom:20px;left:20px}.toast{width:var(--toast-width);font-family:var(--toast-font);padding:var(--toast-padding);border-radius:var(--toast-radius);box-shadow:var(--toast-shadow);display:flex;align-items:center;gap:10px;position:relative;animation:.3s fadein;cursor:pointer}.toast .icon{font-size:20px}.toast .close-btn{position:absolute;right:10px;top:5px;font-weight:700;cursor:pointer}.toast.success{background-color:var(--toast-bg-success);color:var(--toast-color-success)}.toast.error{background-color:var(--toast-bg-error);color:var(--toast-color-error)}.toast.warning{background-color:var(--toast-bg-warning);color:var(--toast-color-warning)}.toast.info{background-color:var(--toast-bg-info);color:var(--toast-color-info)}@keyframes fadein{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}@media (max-width:500px){.toast{width:90%;font-size:14px;padding:10px 14px}}
