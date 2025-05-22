@@ -29,7 +29,7 @@
 
 Simply include the CSS and JS files in your HTML:
 
-> Add this in the <head> for CSS and before </body> for JS
+> Include the CSS link in the <head> of your HTML, and place the JS script tag just before the closing </body> tag for best performance.
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/style.css">
