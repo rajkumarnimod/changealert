@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChangeAlert Demo</title>
+  <link rel="stylesheet" href="dist/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    .demo-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+    }
+    .demo-section h2 {
+      margin-top: 0;
+      color: #444;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4a6bdf;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #3a5bd9;
+    }
+    .theme-buttons button {
+      min-width: 100px;
+    }
+    .position-buttons button {
+      min-width: 120px;
+    }
+    .animation-buttons button {
+      min-width: 140px;
+    }
+    .custom-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <h1>ChangeAlert Library Demo</h1>
+  
+  <div class="demo-section">
+    <h2>1. Theme Types</h2>
+    <div class="button-grid">
+      <button onclick="ChangeAlert.primary('Primary alert message',{timeout: 1000, sound: true,icon:'$' , position:'top-left', theme:'dark'})">Primary</button>
+      <button onclick="ChangeAlert.secondary('Secondary alert message',{timeout: 1000, sound: true})">Secondary</button>
+      <button onclick="ChangeAlert.success('Success alert message',{timeout: 20000, themeMode: 'dark',})">Success</button>
+      <button onclick="ChangeAlert.error('Error alert message',{timeout: 1000, sound: true})">Error</button>
+      <button onclick="ChangeAlert.warning('Warning alert message',{timeout: 1000, sound: true})">Warning</button>
+      <button onclick="ChangeAlert.info('Info alert message',{timeout: 1000, sound: true})">Info</button>
+      <button onclick="ChangeAlert.question('Question alert message',{timeout: 1000, sound: true})">Question</button>
+      <button onclick="ChangeAlert.loading('Loading...', {timeout: 1000})">Loading</button>
+    </div>
+  </div>
+
+
+  <script src="dist/script.js"></script>
+
+</body>
+</html>
