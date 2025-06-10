@@ -166,6 +166,7 @@ ChangeAlert.warning("Unsaved changes!", {
   onClose: () => console.log("Alert closed"),
   onTimeout: () => autoSave()        // When alert disappears automatically
 });
+```
 
 ---
 
