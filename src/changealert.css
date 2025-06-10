@@ -1,0 +1,332 @@
+/*!
+ * CustomAlert.css - A simple and powerful JavaScript alert system
+ * Author: Rajkumar Nimod
+ * Website: https://rajkumarnimod.github.io/changealert/
+ * Version: 1.0.0
+ * License: MIT
+ *
+ * Description:
+ * This CSS file styles the ChangeAlert notifications with support for light and dark themes,
+ * success, error, warning, and info alert types.
+ */
+
+ /* Please retain this header when using or modifying the file */
+
+:root {
+  /* Light Theme */
+  --changealert-bg: #ffffff;
+  --changealert-text: #212529;
+  --changealert-border: rgba(0, 0, 0, 0.1);
+  --changealert-progress: rgba(0, 0, 0, 0.2);
+  --changealert-close-hover: rgba(0, 0, 0, 0.1);
+  --changealert-font: system-ui, -apple-system, sans-serif;
+  --changealert-font-size: 14px;
+  --changealert-padding: 3px 20px;
+  --changealert-border-radius: 8px;
+  --changealert-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* Alert Type Colors */
+  --changealert-primary: #78b4f4;
+  --changealert-secondary: #6c757d;
+  --changealert-success: #3ec55e;
+  --changealert-error: #dc3545;
+  --changealert-warning: #ffc107;
+  --changealert-warning-text: #212529;
+  --changealert-info: #17a2b8;
+  --changealert-question: #6610f2;
+  --changealert-loading: #343a40;
+}
+
+[data-changealert-theme="dark"] {
+  /* Dark Theme */
+  --changealert-bg: #212529;
+  --changealert-text: #f8f9fa;
+  --changealert-border: rgba(255, 255, 255, 0.1);
+  --changealert-progress: rgba(255, 255, 255, 0.2);
+  --changealert-close-hover: rgba(255, 255, 255, 0.1);
+  
+  /* Alert Type Colors (Dark) */
+  --changealert-primary: #0d6efd;
+  --changealert-secondary: #5c636a;
+  --changealert-success: #198754;
+  --changealert-error: #dc3545;
+  --changealert-warning: #ffca2c;
+  --changealert-warning-text: #000000;
+  --changealert-info: #0dcaf0;
+  --changealert-question: #6f42c1;
+  --changealert-loading: #495057;
+}
+
+/* Base Container */
+.changealert-container {
+  position: fixed;
+  z-index: 999999;
+  box-sizing: border-box;
+  pointer-events: none;
+  font-family: var(--changealert-font);
+}
+
+/* Alert Box */
+.changealert {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 1rem;
+  padding: var(--changealert-padding);
+  border-radius: var(--changealert-border-radius);
+  color: var(--changealert-text);
+  background-color: var(--changealert-bg);
+  border: 1px solid var(--changealert-border);
+  box-shadow: var(--changealert-box-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 350px;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  font-size: var(--changealert-font-size);
+  line-height: 1.5;
+}
+
+/* Alert Types */
+.changealert.primary { 
+  background-color: var(--changealert-primary); 
+  color: white; 
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+.changealert.secondary { 
+  background-color: var(--changealert-secondary); 
+  color: white;
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+.changealert.success { 
+  background-color: var(--changealert-success); 
+  color: white;
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+.changealert.error { 
+  background-color: var(--changealert-error); 
+  color: white;
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+.changealert.warning { 
+  background-color: var(--changealert-warning); 
+  color: var(--changealert-warning-text);
+  --changealert-progress: rgba(0,0,0,0.2);
+}
+.changealert.info { 
+  background-color: var(--changealert-info); 
+  color: white;
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+.changealert.question { 
+  background-color: var(--changealert-question); 
+  color: white;
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+.changealert.loading { 
+  background-color: var(--changealert-loading); 
+  color: white;
+  --changealert-progress: rgba(255,255,255,0.3);
+}
+
+/* Content Area */
+.changealert-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+}
+
+/* Icons */
+.changealert-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.changealert-icon img,
+.changealert-icon svg {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* Message Text */
+.changealert-message {
+  flex: 1;
+  word-break: break-word;
+  padding: 2px 0;
+}
+
+/* Close Button */
+.changealert-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: all 0.2s;
+  border-radius: 50%;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.changealert-close:hover {
+  opacity: 1;
+  background-color: var(--changealert-close-hover);
+}
+
+/* Progress Bar */
+.changealert-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--changealert-progress);
+  width: 100%;
+  transform-origin: left;
+  border-radius: 0 0 var(--changealert-border-radius) var(--changealert-border-radius);
+}
+
+/* Buttons Container */
+.changealert-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.changealert-buttons button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+/* Positioning Classes */
+.changealert-container.top-left {
+  top: 1rem;
+  left: 1rem;
+}
+.changealert-container.top-right {
+  top: 1rem;
+  right: 1rem;
+}
+.changealert-container.bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
+.changealert-container.bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+.changealert-container.top-center {
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.changealert-container.bottom-center {
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Animations */
+@keyframes changealert-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes changealert-fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes changealert-zoomIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes changealert-slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes changealert-slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes changealert-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-30px); }
+  60% { transform: translateY(-15px); }
+}
+@keyframes changealert-flip {
+  from { transform: perspective(400px) rotate3d(0,1,0,90deg); opacity: 0; }
+  to { transform: perspective(400px) rotate3d(0,1,0,0); opacity: 1; }
+}
+@keyframes changealert-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+@keyframes changealert-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animation Classes */
+.changealert-fadeIn { animation: changealert-fadeIn 0.3s; }
+.changealert-fadeOut { animation: changealert-fadeOut 0.3s; }
+.changealert-zoomIn { animation: changealert-zoomIn 0.3s; }
+.changealert-slideInRight { animation: changealert-slideInRight 0.3s; }
+.changealert-slideInLeft { animation: changealert-slideInLeft 0.3s; }
+.changealert-bounce { animation: changealert-bounce 0.6s; }
+.changealert-flip { animation: changealert-flip 0.4s; }
+.changealert-pulse { animation: changealert-pulse 0.6s infinite; }
+.changealert-spinner { animation: changealert-spin 1s linear infinite; }
+
+/* RTL Support */
+.changealert-container.rtl .changealert {
+  direction: rtl;
+}
+.changealert-container.rtl .changealert-icon {
+  margin-right: 0;
+  margin-left: 15px;
+}
+.changealert-container.rtl .changealert-close {
+  margin-left: 0;
+  margin-right: 15px;
+}
+
+/* Draggable Alerts */
+.changealert.draggable {
+  cursor: grab;
+  user-select: none;
+}
+.changealert.draggable:active {
+  cursor: grabbing;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+  .changealert-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .changealert {
+    max-width: 100%;
+    font-size: calc(var(--changealert-font-size) + 2px);
+    padding: 14px 16px;
+  }
+  .changealert-container.top-center, 
+  .changealert-container.bottom-center { 
+    width: calc(100% - 20px); 
+    left: 10px; 
+    transform: none; 
+  }
+}
