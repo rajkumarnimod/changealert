@@ -8,26 +8,37 @@
 
 **ChangeAlert** provides beautiful, responsive alerts with 8 themes, dark/light mode, animations, and sound effects. Easily customizable with simple API calls. Perfect for form validations, system alerts, and user notifications. Works across all devices and browsers.
 
-> A Complete Notification Library for Modern Web Apps
-
----
 
 ## 📦 Installation
 
 ### Via CDN (Easiest)
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/style.css">
-<script src="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/script.js"></script>
+<!-- In your HTML <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/changealert.min.css">
+
+<!-- Just before </body> -->
+<script src="https://cdn.jsdelivr.net/gh/rajkumarnimod/changealert/dist/changealert.min.js"></script>
 ```
 
-### Download (Clone or grab the files)
-```html
-/dist/style.css
-/dist/script.js
+### Via NPM (Recommended for Modern Projects)
+```bash
+npm install changealert
+```
+- Then import it in your JavaScript:
+
+### For Webpack/Vite/ESM:
+```js
+import 'changealert/dist/changealert.min.css';
+import ChangeAlert from 'changealert';
 ```
 
----
+### For CommonJS:
+
+```js
+require('changealert/dist/changealert.min.css');
+const ChangeAlert = require('changealert');
+```
 
 ## 🛠️ How It Works
 
@@ -35,39 +46,34 @@ ChangeAlert works by dynamically injecting notification elements into your webpa
 
 ---
 
-## ✅ Features
+## ✅ Key Features
 
-- Theme System: 8 color schemes + auto dark/light toggle
-- Custom Icons: SVG, PNG or emoji support + default set
-- Animations: 9 effects (fade/zoom/slide/bounce/spin)
-- Positions: 6 screen locations + draggable option
-- Queue Control: Smart stacking with priority management
-- Accessibility: WCAG 2.1 compliant, keyboard navigable
-- Progress Bars: Visual countdown with hover pause
-- Sound Effects: Custom audio per alert type
-- HTML Content: Rich text/images in alerts
-- Action Buttons: Multiple configurable CTAs per alert
-- Responsive: Mobile-optimized layouts
-- RTL Support: Right-to-left language compatibility
-- Callbacks: onShow/onClose/onClick hooks
-- Performance: 5KB gzipped, 60fps animations
-- Theming API: CSS variables + JS override methods
-- Overlay Mode: Dimmed background option
-- Z-Index Control: Always-on-top layer management
+- 8 Color Themes (Success, Error, Info, etc.)
+- Light/Dark/Auto Modes
+- 9 Entrance Animations
+- 6 Screen Positions
+- Sound Effects for Alerts
+- HTML or Plain Text Support
+- Auto Close Timer + Progress Bars
+- Custom Action Buttons
+- Fully Responsive (Mobile-Friendly)
+- RTL Text Support
+- Callbacks (onShow, onClick, onClose, onTimeout)
+- Works in Vanilla JS, React, Vue, Angular
 
 ---
 
-## 🚀 Basic Usage
+## 🛠️ Usage Examples
 
 ### Simple Alert
 ```html
 ChangeAlert.success("File uploaded successfully!");
 ```
-### Alert with Options
+### Custom Alert with Options
 
 ```html
 ChangeAlert.error("Login failed!", {
-  timeout: 5000,       // Auto-close after 5s
+  timeout: 5000,
   position: "top-center",
   animationIn: "bounce"
 });
@@ -75,58 +81,92 @@ ChangeAlert.error("Login failed!", {
 
 ---
 
-## 🔧 API Reference
+## 🔧 Options Reference
 
-### `ChangeAlert.watch(selector, callback)`
-
-```html
-{
-  position: "top-right",   // Alert position
-  timeout: 3000,           // Auto-close delay (0 = manual close)
-  theme: "success",        // Alert type
-  themeMode: "auto",       // "auto" | "light" | "dark"
-  icon: null,              // Custom icon (HTML/SVG/URL)
-  closeButton: true,       // Show close button
-  pauseOnHover: true,      // Pause timeout on hover
-  draggable: false,        // Make alert draggable
-  progressBar: true,       // Show countdown bar
-  sound: false,            // Enable sound
-  html: false,             // Allow HTML content
-  animationIn: "fadeIn",   // Entrance animation
-  animationOut: "fadeOut", // Exit animation
-  buttons: [               // Action buttons
+```js
+ChangeAlert.info("Custom message", {
+  position: "top-right",     // Alert position on the screen: 'top-left', 'top-center', etc.
+  timeout: 4000,             // Auto-close delay in milliseconds (0 = manual close only)
+  theme: "info",             // Alert type: 'success', 'error', 'info', 'warning'
+  themeMode: "auto",         // Color mode: 'auto', 'light', or 'dark'
+  icon: null,                // Custom icon as HTML, SVG, or image URL
+  closeButton: true,         // Show or hide the close (X) button
+  pauseOnHover: true,        // Pause the timeout countdown when hovered
+  draggable: false,          // Make alert draggable (if supported)
+  progressBar: true,         // Display a visual countdown progress bar
+  sound: false,              // Play sound when alert appears
+  html: false,               // Enable raw HTML content inside alert
+  animationIn: "fadeIn",     // Entry animation
+  animationOut: "fadeOut",   // Exit animation
+  buttons: [                 // Action buttons with custom text and callback
     { text: "Retry", action: retryFunction }
-  ]
-}
-```
-
-##  Animation Types
-
-```html
-// Available animations:
-"fadeIn" | "fadeOut" | "zoomIn" 
-"slideInRight" | "slideInLeft" | "bounce" 
-"flip" | "pulse" | "spin"
-
-// Usage:
-ChangeAlert.info("Look at this animation!", {
-  animationIn: "flip",
-  animationOut: "zoomOut"
+  ],
+  onShow: () => console.log("Alert appeared"),     // Triggered when alert is shown
+  onClick: (e) => saveChanges(),                   // Triggered when alert is clicked
+  onClose: () => console.log("Alert closed"),      // Triggered when alert is manually closed
+  onTimeout: () => autoSave()                      // Triggered when alert closes due to timeout
 });
 ```
 
 ---
 
-## 🔔 Callbacks & Events
+##  Animation Types
 
-```html
-ChangeAlert.warning("Unsaved changes!", {
-  onShow: () => console.log("Alert appeared"),
-  onClick: (e) => saveChanges(),
-  onClose: () => console.log("Alert closed"),
-  onTimeout: () => autoSave()
+```js
+// Available animations:
+fadeIn, fadeOut, zoomIn, slideInRight, slideInLeft,
+bounce, flip, pulse, spin
+```
+
+// Usage:
+```js
+ChangeAlert.info("Watch this animation", {
+  animationIn: "flip",
+  animationOut: "zoomOut"
 });
 ```
+## ⚙️ Framework Integration
+
+### ✅ HTML
+- Use via <script> and <link> as shown in CDN setup.
+
+### ✅ React
+```js
+import 'changealert/dist/changealert.min.css';
+import ChangeAlert from 'changealert';
+
+ChangeAlert.success("Hello from React!");
+```
+
+### ✅ Vue
+```js
+import 'changealert/dist/changealert.min.css';
+import ChangeAlert from 'changealert';
+
+ChangeAlert.warning("Vue alert works!");
+```
+
+### ✅ Angular
+```js
+import 'changealert/dist/changealert.min.css';
+declare const ChangeAlert: any;
+
+ChangeAlert.error("Angular alert triggered!");
+```
+---
+
+## 🔔 Callbacks & Events
+
+Use callbacks to hook into alert lifecycle.
+
+```js
+ChangeAlert.warning("Unsaved changes!", {
+  onShow: () => console.log("Alert appeared"),
+  onClick: () => saveChanges(),      // Triggered when alert is clicked
+  onClose: () => console.log("Alert closed"),
+  onTimeout: () => autoSave()        // When alert disappears automatically
+});
+
 ---
 
 ## 📱 Mobile Responsiveness
