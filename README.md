@@ -68,6 +68,16 @@ ChangeAlert works by dynamically injecting notification elements into your webpa
 ### Simple Alert
 ```html
 ChangeAlert.success("File uploaded successfully!");
+
+// Demo Buttons 
+<button onclick="ChangeAlert.primary('Primary Alert')"> Primary </button>
+<button onclick="ChangeAlert.secondary('Secondary Alert')"> Secondary </button>
+<button onclick="ChangeAlert.success('Success!')"> Success </button>
+<button onclick="ChangeAlert.error('Error!')"> Error </button>
+<button onclick="ChangeAlert.warning('Warning!')"> Warning </button>
+<button onclick="ChangeAlert.info('Info!')"> Info </button>
+<button onclick="ChangeAlert.question('Are you sure?')"> Question </button>
+<button onclick="ChangeAlert.loading('Please wait...')"> Loading</button>
 ```
 ### Custom Alert with Options
 
@@ -135,9 +145,26 @@ ChangeAlert.info("Watch this animation", {
 import 'changealert/dist/changealert.min.css';
 import ChangeAlert from 'changealert';
 
-ChangeAlert.success("Hello from React!");
+ChangeAlert.success("Hello from ChangeAlert!");
 ```
+```js
 
+import ChangeAlert from 'changealert';
+function App() {
+ 
+  const showAlert = () => {
+    ChangeAlert.success("Hello from ChangeAlert!",{sound:true});
+  };
+
+  return (
+    <div>
+      <button onClick={showAlert}>Show Alert</button>
+    </div>
+  );
+}
+
+export default App;
+```
 ### ✅ Vue
 ```js
 import 'changealert/dist/changealert.min.css';
