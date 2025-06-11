@@ -254,6 +254,13 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/rajkumar-nimod)
 📫 rajkumar221299@gmail.com
 
 ---
+## 🙏 Credits
+
+We'd like to thank all the people who contributed to this project.
+
+👉 [View full contributors list →](CONTRIBUTORS.md)
+
+---
 
 ## 📄 License
 
