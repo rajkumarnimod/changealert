@@ -1,12 +1,15 @@
 {
   "name": "changealert",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A lightweight, customizable JavaScript alert and notification library.",
   "main": "dist/changealert.min.js",
-  "module": "dist/changealert.min.js",
   "style": "dist/changealert.min.css",
-  "files": ["dist/"],
-  "type": "module",
+  "types": "changealert.d.ts",    
+  "files": [
+    "dist",
+    "README.md",
+    "changealert.d.ts"          
+  ],
   "keywords": [
     "changealert",
     "toast",
